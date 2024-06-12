@@ -1,1 +1,1 @@
-# Django blood bank management system
+# Django management system linking blood recipients and blood donors
