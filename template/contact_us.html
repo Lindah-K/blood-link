@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'donation/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'donation/logo.png' %}">
+    <title>Contact</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- head title -->
+        <header>
+            <h5 class="head text-white text-center p-3">Blood Link</h5>
+        </header>
+    
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-sm sticky-top">
+    
+            <!-- logo -->
+            <a class="navbar-brand ml-5" href="#">
+                <img src="{% static 'donation/logo.png' %}" alt="logo" style="width:60px;">
+            </a>
+    
+            <!-- navbar item -->
+            <div class="col">
+                <ul class="navbar-nav flex-row-reverse">
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link font-weight-bolder" href="#" data-toggle="dropdown">Log In </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item font-weight-bolder" href="/admin/">Admin</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bolder" href="{% url 'contact_us' %}">Contact Us</a>
+                    </li>
+                    <li class="nav-item text-dark">
+                        <a class="nav-link font-weight-bolder" href="{% url 'about_us' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bolder" href="{% url 'dregdisplay' %}">Donor Registration</a>
+                    </li>
+                    <li class="nav-item font-weight-bolder">
+                        <a class="nav-link" href="{% url 'searchsite' %}">Find Donors</a>
+                    </li>
+                    <li class="nav-item font-weight-bolder">
+                        <a class="nav-link" href="{% url 'homesite' %}">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- contact_us -->
+        <div class="container">
+            <div class="about-section">
+                <div class="about-text">
+                    <h2>{{ contact_details.title }}</h2>
+                    <p>{{ contact_details.description|safe }}</p>
+                    <!-- Display contact information -->
+                    {% if contact_details.display_contact_info %}
+                        <div>{{ contact_details.display_contact_info|safe }}</div>
+                    {% endif %}
+                </div>
+                <div class="about-image">
+                    {% if contact_details.logo_image %}
+                        <img src="{{ contact_details.logo_image.url }}" alt="Contact Us Image">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
